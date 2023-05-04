@@ -21,8 +21,8 @@ def parsing_zen() -> None:
     cnt = 0
     limit_texts = 10000
 
-    conn = psycopg2.connect(dbname='suggestio', user='postgres',
-                            password='qwerty', host='localhost', port=5432)
+    conn = psycopg2.connect(dbname='', user='',
+                            password='', host='localhost', port=5432)
     conn.autocommit = True
     cur = conn.cursor()
 

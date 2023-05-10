@@ -71,28 +71,6 @@ def parsing_zen() -> None:
             else:
                 break
 
-    # Adding links from channel
-    # for url in urls_channels:
-    #     driver.get(url)
-
-        # SCROLL_PAUSE_TIME = 0.5
-        # last_height = driver.execute_script("return document.body.scrollHeight")
-        # while True:
-        #     # Scroll down to bottom
-        #     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        #     # Wait to load page
-        #     time.sleep(SCROLL_PAUSE_TIME)
-        #     # Calculate new scroll height and compare with last scroll height
-        #     new_height = driver.execute_script("return document.body.scrollHeight")
-        #     if new_height == last_height:
-        #         break
-        #     last_height = new_height
-        #
-        # elements = driver.find_elements(By.CLASS_NAME, 'card-image-compact-view__clickable')
-        # for i in range(len(elements)):
-        #     urls_full.add(elements[i].get_attribute('href'))
-        #     break
-
     conn.close()
 
 

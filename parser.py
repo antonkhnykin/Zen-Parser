@@ -1,6 +1,4 @@
 import sys
-
-import time
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
@@ -8,9 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
-
 import psycopg2
-import pandas as pd
 
 
 def parsing_zen() -> None:
@@ -21,8 +17,8 @@ def parsing_zen() -> None:
     cnt = 0
     limit_texts = 10000
 
-    conn = psycopg2.connect(dbname='', user='',
-                            password='', host='localhost', port=5432)
+    conn = psycopg2.connect(dbname='suggestio', user='postgres',
+                            password='qwerty', host='localhost', port=5432)
     conn.autocommit = True
     cur = conn.cursor()
 
@@ -70,6 +66,28 @@ def parsing_zen() -> None:
                 driver.find_element('link text', 'Следующие 20').click()
             else:
                 break
+
+    # Adding links from channel
+    # for url in urls_channels:
+    #     driver.get(url)
+
+        # SCROLL_PAUSE_TIME = 0.5
+        # last_height = driver.execute_script("return document.body.scrollHeight")
+        # while True:
+        #     # Scroll down to bottom
+        #     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        #     # Wait to load page
+        #     time.sleep(SCROLL_PAUSE_TIME)
+        #     # Calculate new scroll height and compare with last scroll height
+        #     new_height = driver.execute_script("return document.body.scrollHeight")
+        #     if new_height == last_height:
+        #         break
+        #     last_height = new_height
+        #
+        # elements = driver.find_elements(By.CLASS_NAME, 'card-image-compact-view__clickable')
+        # for i in range(len(elements)):
+        #     urls_full.add(elements[i].get_attribute('href'))
+        #     break
 
     conn.close()
 
